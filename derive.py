@@ -4,10 +4,12 @@ Created on Tue Feb 13 10:53:10 2018
 
 @author: emst
 """
-IOT = pd.read_excel('Marine IO Table 2014 UK_v2.xlsx', 'IOT', na_values=['NA'], skipfooter=None, index_col=0, usecols='B:FP', skiprows=6, header=0)
 
 def derive(IOT):
-    """ Derive the A matrix and Leontief inverse for a given n x m IOT"""
+    """ Derive the A matrix and Leontief inverse for a given n x m Input Output Table (IOT)"""
+    """ Takes the IOT in the detailed format published by the Office For National Statistics,
+    with 13 final demand columns, 7 skippable row headings, and 1 row total that can be ommitted.
+    IOT should first be read into a DataFrame"""
     import pandas as pd
     import numpy as np
     from pandas import ExcelWriter
